@@ -3,11 +3,11 @@ import { authOptions } from "../pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 
-export default function Home({ session }) {
+export default function AppBar({ session }) {
   console.log(session);
   return (
     <div>
-      {session.user && (
+      {session?.user && (
         <div
           style={{
             display: "flex",
@@ -18,7 +18,7 @@ export default function Home({ session }) {
           {" "}
           <img
             style={{ width: "50px", borderRadius: "50%" }}
-            src={session.data.user?.image}
+            src={session.user?.image}
           ></img>
           <div>
             <Button
@@ -32,7 +32,7 @@ export default function Home({ session }) {
           </div>
         </div>
       )}
-      {!session.user && (
+      {!session?.user && (
         <div
           style={{
             display: "flex",
